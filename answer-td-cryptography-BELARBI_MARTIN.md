@@ -120,7 +120,7 @@ Keccak256 (SHA3-256) produces a hash value with an output size of 256 bits or 32
 
 Keccak256 and SHA3-256 are not exactly equivalent, although they are closely related. Keccak is a cryptographic sponge construction, and SHA3 is the winning algorithm of the NIST hash function competition, which is based on the Keccak construction. SHA3-256 is one specific variant of the Keccak family, which produces a 256-bit hash output. While they share similarities, they are not interchangeable in all contexts.
 
-# 6 Prerequisites, again 
+# 6 Prerequisites, again
 - DSA: Signature algorithm
 
 - Blake2s: Hash function
