@@ -1,3 +1,10 @@
+---
+tags: [Import-ca7c]
+title: 1 Prerequisites
+created: '2023-10-12T08:48:50.202Z'
+modified: '2023-10-12T08:56:14.432Z'
+---
+
 # 1 Prerequisites
 
 - AES: An encryption algorithm.
@@ -16,19 +23,18 @@
 
 - ChaCha20-Poly1305 : is an authenticated encryption with additional data (AEAD) algorithm that combines the ChaCha20 stream cipher with the Poly1305 message authentication code.
 
-AES-128 refers to the size of the key used in the Advanced Encryption Standard (AES) algorithm, which is 128 bits or 16 bytes . The block size of AES is also 128 bits.
+- AES-128 refers to the size of the key used in the Advanced Encryption Standard (AES) algorithm, which is 128 bits or 16 bytes . The block size of AES is also 128 bits.
 
-SHA-3 means : no valid answer
+- SHA-3 means : It is the third version of SHA.
+  SHA-3 is a cryptographic hash function that was selected by the National Institute of Standards and Technology (NIST) in 2012 after a public competition among non-NSA designers. It is internally different from the MD5-like structure of SHA-1 and SHA-2. 
 
-SHA-3 is a cryptographic hash function that was selected by the National Institute of Standards and Technology (NIST) in 2012 after a public competition among non-NSA designers. It is internally différente from the MD5-like structure of SHA-1 and SHA-2. It is the third version of SHA.
+- 1101110001000010011000110001001001100010100110011011000110100101100110111111101100001101100100101000100110110100001010001100111 : Binary
 
-1101110001000010011000110001001001100010100110011011000110100101100110111111101100001101100100101000100110110100001010001100111 : Binary
+- 6e213189314cd8d2cdfd86c944da1467 : hexadecimal
 
-6e213189314cd8d2cdfd86c944da1467 : hexadecimal
+- NmUyMTMxODkzMTRjZDhkMmNkZmQ4NmM5NDRkYTE0NjcK : base64
 
-NmUyMTMxODkzMTRjZDhkMmNkZmQ4NmM5NDRkYTE0NjcK : base64
-
-146387430040258906480581650393585030247 : decimal
+- 146387430040258906480581650393585030247 : decimal
 
 # 2 ECB, CBC modes illustration
 
@@ -84,20 +90,21 @@ The size of the output is 256 bits(bits), so 32 bytes (octets).
 
 ## 4.2 Example 2
 
-Same as 4.1
+Same as 4.1 🥳
 
 # 5 Hash Function with python 
 
+SHA-256:
 Hash function: hashlib.sha256()
 Output size: 256 bits or 32 bytes
 Calculation: hashlib.sha256(b'hello').digest()
-SHA3-256:
 
+SHA3-256:
 Hash function: hashlib.sha3_256()
 Output size: 256 bits or 32 bytes
 Calculation: ``hashlib.sha3_256(b'hello').digest()
-BLAKE2s:
 
+BLAKE2s:
 Hash function: hashlib.new('blake2s')
 Output size: Variable (default is 256 bits or 32 bytes)
 Calculation: ```hashlib.new('blake2s', b'hello').digest()```
@@ -106,8 +113,7 @@ Calculation: ```hashlib.new('blake2s', b'hello').digest()```
 
 Output obtain with the example 1
 
-SHA-256:
-b'2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
+SHA-256: b'2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
 
 SHA3-256: b'3338be694f50c5f338814986cdf0686453a888b84f424d792af4b9202398f392'
 
