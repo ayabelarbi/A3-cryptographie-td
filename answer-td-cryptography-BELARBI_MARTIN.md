@@ -1,10 +1,3 @@
----
-tags: [Import-ca7c]
-title: 1 Prerequisites
-created: '2023-10-12T08:48:50.202Z'
-modified: '2023-10-12T08:56:14.432Z'
----
-
 # 1 Prerequisites
 
 - AES: An encryption algorithm.
