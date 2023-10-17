@@ -45,7 +45,7 @@ exemple of key generated : f68f714d8f7f67c87aa389474404c46a or 041bf8549ccba08f5
     <p>original image</p>
   </div>
   <div style="flex: 1; margin-right: 10px;">
-    <img src="bitcoin-cbc.png" alt="Image cryptée en ecb" />
+    <img src="bitcoin-ecb.png" alt="Image cryptée en ecb" />
     <p>Crypted image with ecb</p>
   </div>
   <div style="flex: 1;">
