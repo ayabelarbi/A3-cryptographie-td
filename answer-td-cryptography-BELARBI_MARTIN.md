@@ -39,6 +39,22 @@ encryption key generation command : ```openssl rand -hex 16```
 
 exemple of key generated : f68f714d8f7f67c87aa389474404c46a or 041bf8549ccba08f5becfc0350367447 
 
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; margin-right: 10px;">
+    <img src="bitcoin.png" alt="Description de l'image 1" />
+    <p>original image</p>
+  </div>
+  <div style="flex: 1; margin-right: 10px;">
+    <img src="https://github.com/ayabelarbi/cryptographie-td-A3/blob/main/bitcoin-cbc.png" alt="Image cryptée en ecb" />
+    <p>Crypted image with ecb</p>
+  </div>
+  <div style="flex: 1;">
+    <img src="bitcoin-cbc.png" alt="Image cryptée en cbc" />
+    <p>Crypted image with cbc</p>
+  </div>
+</div>
+
+
 # 3 Key Derivation with python
 
 ## 3.1 Example 1
