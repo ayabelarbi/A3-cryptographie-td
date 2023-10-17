@@ -152,4 +152,37 @@ Keccak256 and SHA3-256 are not exactly equivalent, although they are closely rel
 
 - curve25519: Elliptic curve used in cryptography
 
-RSA-2048, both the public and private keys have a size of 2048 bits. The key size determines the level of security provided by the RSA encryption scheme, with larger key sizes generally offering stronger security against brute-force attacks and other cryptographic attacks.
+RSA-2048, 2048 refers to the size of the modulus used to generate the RSA public and private key pair. The modulus is a large number that is the product of two large prime numbers. It is used to compute both the public and private keys.
+
+The public key of RSA is made up of the modulus and a public exponent. The public exponent is a small integer that is chosen randomly and kept public. The private key of RSA is made up of the modulus and the inverse of the public exponent. The inverse of the public exponent is a large integer that is kept secret.
+
+To encrypt a message with RSA, the sender uses the recipient's public key. To decrypt a message with RSA, the recipient uses their private key.
+
+Therefore, when we say RSA-2048, we are referring to a RSA key pair where the modulus (n) is 2048 bits long. The actual size of the private key may be larger than the public key due to the additional values it contains. 
+-----BEGIN RSA PRIVATE KEY-----
+RSAPrivateKey ::= SEQUENCE {
+  version           Version,
+  modulus           INTEGER,  -- n
+  publicExponent    INTEGER,  -- e
+  privateExponent   INTEGER,  -- d
+  prime1            INTEGER,  -- p
+  prime2            INTEGER,  -- q
+  exponent1         INTEGER,  -- d mod (p-1)
+  exponent2         INTEGER,  -- d mod (q-1)
+  coefficient       INTEGER,  -- (inverse of q) mod p
+  otherPrimeInfos   OtherPrimeInfos OPTIONAL
+}
+-----END RSA PRIVATE KEY-----
+
+-----BEGIN RSA PUBLIC KEY-----
+RSAPublicKey ::= SEQUENCE {
+    modulus           INTEGER,  -- n
+    publicExponent    INTEGER   -- e
+}
+-----END RSA PUBLIC KEY-----
+
+We had test the size of the RSA-2048 private key using this command :
+``` openssl genpkey -algorithm RSA -out test-privateKey-RSA2048.pem -pkeyopt rsa_keygen_bits:2048 ```
+``` openssl rsa -in test-privateKey-RSA2048.pem -pubout -out public_key.pem```
+
+We can see that the size of the private is larger than the size of public key. (e.g : test-public_key-RSA2048.pem ans test-privateKey-RSA2048)
