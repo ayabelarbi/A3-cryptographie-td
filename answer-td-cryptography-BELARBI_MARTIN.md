@@ -19,8 +19,8 @@
 - AES-128 refers to the size of the key used in the Advanced Encryption Standard (AES) algorithm, which is 128 bits or 16 bytes . The block size of AES is also 128 bits.
 
 - SHA-3 means : It is the third version of SHA.
-  SHA-3 is a cryptographic hash function that was selected by the National Institute of Standards and Technology (NIST) in 2012 after a public competition among non-NSA designers. It is internally different from the MD5-like structure of SHA-1 and SHA-2. 
-
+  SHA-3 is a cryptographic hash function that was selected by the National Institute of Standards and Technology (NIST) in 2012 after a public competition among non-NSA designers. It is internally different from the MD5-like structure of SHA-1 and SHA-2.
+  
 - 1101110001000010011000110001001001100010100110011011000110100101100110111111101100001101100100101000100110110100001010001100111 : Binary
 
 - 6e213189314cd8d2cdfd86c944da1467 : hexadecimal
@@ -159,6 +159,7 @@ The public key of RSA is made up of the modulus and a public exponent. The publi
 To encrypt a message with RSA, the sender uses the recipient's public key. To decrypt a message with RSA, the recipient uses their private key.
 
 Therefore, when we say RSA-2048, we are referring to a RSA key pair where the modulus (n) is 2048 bits long. The actual size of the private key may be larger than the public key due to the additional values it contains. 
+``` 
 -----BEGIN RSA PRIVATE KEY-----
 RSAPrivateKey ::= SEQUENCE {
   version           Version,
@@ -173,16 +174,23 @@ RSAPrivateKey ::= SEQUENCE {
   otherPrimeInfos   OtherPrimeInfos OPTIONAL
 }
 -----END RSA PRIVATE KEY-----
+```
 
+``` 
 -----BEGIN RSA PUBLIC KEY-----
 RSAPublicKey ::= SEQUENCE {
     modulus           INTEGER,  -- n
     publicExponent    INTEGER   -- e
 }
 -----END RSA PUBLIC KEY-----
+```
+
 
 We had test the size of the RSA-2048 private key using this command :
+
 ``` openssl genpkey -algorithm RSA -out test-privateKey-RSA2048.pem -pkeyopt rsa_keygen_bits:2048 ```
+
+
 ``` openssl rsa -in test-privateKey-RSA2048.pem -pubout -out public_key.pem```
 
 We can see that the size of the private is larger than the size of public key. (e.g : test-public_key-RSA2048.pem ans test-privateKey-RSA2048)
