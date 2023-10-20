@@ -12,5 +12,4 @@ def get_group_elements(p):
     # Output each element
     return ' '.join(elements)
 
-# Test with p = 23
 print(get_group_elements(23))
