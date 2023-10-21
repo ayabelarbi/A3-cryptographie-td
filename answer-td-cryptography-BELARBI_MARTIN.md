@@ -20,7 +20,7 @@
 
 - SHA-3 means : It is the third version of SHA.
   SHA-3 is a cryptographic hash function that was selected by the National Institute of Standards and Technology (NIST) in 2012 after a public competition among non-NSA designers. It is internally different from the MD5-like structure of SHA-1 and SHA-2.
-  
+
 - 1101110001000010011000110001001001100010100110011011000110100101100110111111101100001101100100101000100110110100001010001100111 : Binary
 
 - 6e213189314cd8d2cdfd86c944da1467 : hexadecimal
@@ -194,3 +194,10 @@ We had test the size of the RSA-2048 private key using this command :
 ``` openssl rsa -in test-privateKey-RSA2048.pem -pubout -out public_key.pem```
 
 We can see that the size of the private is larger than the size of public key. (e.g : test-public_key-RSA2048.pem ans test-privateKey-RSA2048)
+
+
+# 8 RSA algorithm 
+
+## 8.1 RSA encryption
+
+To generate the RSA encryption, we create the "exo8_1.py". Please, to find the answer, run the script "exo8_1.py". 
