@@ -104,18 +104,18 @@ Same as 4.1 🥳
 # 5 Hash Function with python 
 
 SHA-256:
-Hash function: hashlib.sha256()
-Output size: 256 bits or 32 bytes
-Calculation: hashlib.sha256(b'hello').digest()
+Hash function: hashlib.sha256() \
+Output size: 256 bits or 32 bytes \
+Calculation: ```hashlib.sha256(b'hello').digest()```
 
 SHA3-256:
-Hash function: hashlib.sha3_256()
-Output size: 256 bits or 32 bytes
-Calculation: ``hashlib.sha3_256(b'hello').digest()
+Hash function: hashlib.sha3_256() \
+Output size: 256 bits or 32 bytes \
+Calculation: ```hashlib.sha3_256(b'hello').digest()```
 
 BLAKE2s:
-Hash function: hashlib.new('blake2s')
-Output size: Variable (default is 256 bits or 32 bytes)
+Hash function: hashlib.new('blake2s') \
+Output size: Variable (default is 256 bits or 32 bytes) \
 Calculation: ```hashlib.new('blake2s', b'hello').digest()```
 
 ## 5.2 Example 1 & 5.3 Example 2
@@ -131,7 +131,9 @@ BLAKE2s:  b'19213bacc58dee6dbde3ceb9a47cbb330b3d86f8cca8997eb00be456f140ca25'
 Output obtain with the example 2
 
 SHA-256:  b'2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
+
 SHA3-256: b'3338be694f50c5f338814986cdf0686453a888b84f424d792af4b9202398f392'
+
 BLAKE2s:  b'19213bacc58dee6dbde3ceb9a47cbb330b3d86f8cca8997eb00be456f140ca25'
 
 ## 5.4 Example 3
@@ -194,6 +196,160 @@ We had test the size of the RSA-2048 private key using this command :
 ``` openssl rsa -in test-privateKey-RSA2048.pem -pubout -out public_key.pem```
 
 We can see that the size of the private is larger than the size of public key. (e.g : test-public_key-RSA2048.pem ans test-privateKey-RSA2048)
+
+# 7 Algebra
+
+## 7.1 Content of (Z/pZ)∗ where p is prime
+
+
+Implementation example for the desired function :
+
+``` 
+def get_group_elements(p):
+    # Find a generator of the group (Z/pZ)*
+    for g in range(2, p):
+        if pow(g, p-1, p) == 1:
+            break
+
+    # Iterate over all elements in the group (Z/pZ)* using the generator
+    elements = []
+    for i in range(0, p):
+        elements.append(str(pow(g, i, p)))
+
+    # Output each element
+    return ' '.join(elements)
+
+print(get_group_elements(23)) 
+```
+
+Output : 
+``` 1 2 4 8 16 9 18 13 3 6 12 1 2 4 8 16 9 18 13 3 6 12 1 ```
+
+## 7.2 Basic DH
+
+```
+from random import randint
+
+q = 509
+p = 2*q+1
+g = 2
+u = randint(2,p-1)
+v = randint(2,p-1)
+
+U = pow(g, u, p)
+V = pow(g, v, p)
+
+Ka = pow(V, u, p)
+Kb = pow(U, v, p)
+
+print(Ka)
+print(Kb)
+```
+
+Output : 
+```
+380
+380
+```
+
+Ka est bien égal à Kb
+
+## 7.3 Modular inverse
+
+```int_to_bytes(n)``` :  Converts an integer into a sequence of bytes.
+
+```gcd(a, b)``` : Calculates the greatest common divisor (GCD) of two integers a and b.
+
+```mod_inv(a, n)``` : Calculates the modular multiplicative inverse of a modulo n.
+
+size of p in bits : ```64``` or 8 bytes
+size of q in bits : ```64``` or 8 bytes
+size of c in bits : ```123``` or 16 bytes
+
+size of d in bits : ```127``` or 16 bytes
+size of n in bits : ```128``` or 16 bytes
+size of m in bits : ```127``` or 16 bytes
+
+m is an integer (int)
+
+We get ```MySecretPassword```!
+
+# 7 Algebra
+
+## 7.1 Content of (Z/pZ)∗ where p is prime
+
+
+Implementation example for the desired function :
+
+``` 
+def get_group_elements(p):
+    # Find a generator of the group (Z/pZ)*
+    for g in range(2, p):
+        if pow(g, p-1, p) == 1:
+            break
+
+    # Iterate over all elements in the group (Z/pZ)* using the generator
+    elements = []
+    for i in range(0, p):
+        elements.append(str(pow(g, i, p)))
+
+    # Output each element
+    return ' '.join(elements)
+
+print(get_group_elements(23)) 
+```
+
+Output : 
+``` 1 2 4 8 16 9 18 13 3 6 12 1 2 4 8 16 9 18 13 3 6 12 1 ```
+
+## 7.2 Basic DH
+
+```
+from random import randint
+
+q = 509
+p = 2*q+1
+g = 2
+u = randint(2,p-1)
+v = randint(2,p-1)
+
+U = pow(g, u, p)
+V = pow(g, v, p)
+
+Ka = pow(V, u, p)
+Kb = pow(U, v, p)
+
+print(Ka)
+print(Kb)
+```
+
+Output : 
+```
+380
+380
+```
+
+Ka est bien égal à Kb
+
+## 7.3 Modular inverse
+
+```int_to_bytes(n)``` :  Converts an integer into a sequence of bytes.
+
+```gcd(a, b)``` : Calculates the greatest common divisor (GCD) of two integers a and b.
+
+```mod_inv(a, n)``` : Calculates the modular multiplicative inverse of a modulo n.
+
+size of p in bits : ```64``` or 8 bytes
+size of q in bits : ```64``` or 8 bytes
+size of c in bits : ```123``` or 16 bytes
+
+size of d in bits : ```127``` or 16 bytes
+size of n in bits : ```128``` or 16 bytes
+size of m in bits : ```127``` or 16 bytes
+
+m is an integer (int)
+
+We get ```MySecretPassword```!
 
 
 # 8 RSA algorithm 
